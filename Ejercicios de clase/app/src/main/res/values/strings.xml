@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">EjerciciosClases</string>
+    <string name="text_1">Tutorial de Jetpack Compose</string>
+    <string name="text_2">
+        Jetpack Compose es un conjunto de herramientas moderno para construir interfaces nativas de Android.
+        Compose simplifica y acelera el desarrollo de interfaces en Android con menos código, herramientas potentes
+        y APIs intuitivas de Kotlin.
+    </string>
+    <string name="text_3">
+        En este tutorial, construirás un componente de interfaz simple con funciones declarativas.
+        Llamas a funciones de Compose para indicar qué elementos quieres y el compilador de Compose hace el resto.
+        Compose está basado en funciones *Composable*. Estas funciones te permiten definir la interfaz de tu aplicación
+        de forma programática, describiendo cómo debe verse y proporcionando dependencias de datos,
+        en lugar de enfocarte en el proceso de construcción de la interfaz, como inicializar un elemento y luego
+        adjuntarlo a un padre. Para crear una función Composable, agregas la anotación @Composable al nombre de la función.
+    </string>
+
+    <string name="first_title">Composable de texto</string>
+    <string name="first_description">Muestra texto y sigue las recomendaciones de Material Design.</string>
+
+    <string name="second_title">Composable de imagen</string>
+    <string name="second_description">
+        Crea un composable que organiza y dibuja un objeto de la clase Painter.
+    </string>
+
+    <string name="third_title">Composable Row</string>
+    <string name="third_description">
+        Un composable de diseño que coloca sus elementos en una secuencia horizontal.
+    </string>
+
+    <string name="fourth_title">Composable Column</string>
+    <string name="fourth_description">
+        Un composable de diseño que coloca sus elementos en una secuencia vertical.
+    </string>
+
+    <string name="ATC">¡Todas las tareas completadas!</string>
+    <string name="NW">¡Buen trabajo!</string>
+</resources>
