@@ -35,4 +35,8 @@
 
     <string name="ATC">¡Todas las tareas completadas!</string>
     <string name="NW">¡Buen trabajo!</string>
+    <string name="calculate_tip">Calcular propina</string>
+    <string name="bill_amount">Monto de la cuenta</string>
+    <string name="tip_amount">Monto de la propina: %s</string>
+    <string name="tip_percentage">Porcentaje de propina</string>
 </resources>

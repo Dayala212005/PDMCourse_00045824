@@ -15,6 +15,7 @@ import com.example.ejerciciosclases.ui.theme.EjerciciosClasesTheme
 import com.example.ejerciciosclases.clase23_3.CuadranteCompose
 import com.example.ejerciciosclases.clase23_3.ArticuloCompose
 import com.example.ejerciciosclases.clase23_3.AdministradorTareas
+import com.example.ejerciciosclases.TareaTipCalculator.TipCalculator
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,9 +24,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             EjerciciosClasesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AdministradorTareas(modifier = Modifier)
+                    //AdministradorTareas(modifier = Modifier)
                     //CuadranteCompose(modifier = Modifier)
                     //ArticuloCompose(modifier = Modifier)
+                    TipCalculator(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
