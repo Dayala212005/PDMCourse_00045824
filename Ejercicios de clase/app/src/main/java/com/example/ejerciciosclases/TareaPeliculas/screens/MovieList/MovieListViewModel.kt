@@ -18,6 +18,10 @@ class MovieListViewModel : ViewModel() {
     private val _loading = MutableStateFlow<Boolean>(false)
     val loading = _loading.asStateFlow()
 
+    private val _error = MutableStateFlow<String?>(null)
+    val error = _error.asStateFlow()
+
+
     init {
         loadMovies()
     }
@@ -25,7 +29,14 @@ class MovieListViewModel : ViewModel() {
     fun loadMovies() {
         viewModelScope.launch {
             _loading.value = true
-            _movies.value = movieRepository.getMovies()
+            movieRepository.getMovies()
+                .onSuccess { movies ->
+                    _movies.value = movies
+                    _error.value = null
+                }
+                .onFailure { error ->
+                    _error.value = error.message
+                }
             _loading.value = false
         }
     }

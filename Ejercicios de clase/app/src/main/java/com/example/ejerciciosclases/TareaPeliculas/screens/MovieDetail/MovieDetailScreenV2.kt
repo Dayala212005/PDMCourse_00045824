@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -82,6 +83,7 @@ fun MovieDetailScreenV2(
 ) {
     val movie by viewModel.movie.collectAsState()
     val loading by viewModel.loading.collectAsState()
+    val error by viewModel.error.collectAsState()
 
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
@@ -93,6 +95,23 @@ fun MovieDetailScreenV2(
     if (loading) {
         AppScaffold(title = "Movies") { padding ->
             CircularProgressIndicator(modifier = Modifier.padding(padding))
+        }
+        return
+    }
+
+    if (error != null) {
+        AppScaffold(title = "Movies") { padding ->
+            Column(modifier = Modifier.padding(padding).fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center) {
+                Text(
+                    text = error!!,
+                    modifier = Modifier.padding(padding)
+                )
+                Button(onClick = { viewModel.loadMovieById(movieId) }) {
+                    Text(text = "Reintentar")
+                }
+            }
         }
         return
     }

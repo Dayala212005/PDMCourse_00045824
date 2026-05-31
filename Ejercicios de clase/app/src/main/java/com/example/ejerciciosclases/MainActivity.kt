@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.ejerciciosclases.POST.navigation.PostApp
+import com.example.ejerciciosclases.POST.screens.ViewPost.ShowPosts
 import com.example.ejerciciosclases.TareaPeliculas.navigation.MovieApp
 import com.example.ejerciciosclases.ui.theme.EjerciciosClasesTheme
 import com.example.ejerciciosclases.clase23_3.CuadranteCompose
@@ -29,7 +31,8 @@ class MainActivity : ComponentActivity() {
                     //CuadranteCompose(modifier = Modifier)
                     //ArticuloCompose(modifier = Modifier)
                     //TipCalculator(modifier = Modifier.padding(innerPadding))
-                    MovieApp()
+                    //MovieApp()
+                    PostApp()
                 }
             }
         }
