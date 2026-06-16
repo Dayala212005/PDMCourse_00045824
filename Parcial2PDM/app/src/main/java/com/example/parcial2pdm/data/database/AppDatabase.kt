@@ -5,15 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.parcial2pdm.data.database.dao.OptionDao
+import com.example.parcial2pdm.data.database.dao.QuestionDao
 import com.example.parcial2pdm.data.database.entities.PlaceOptionEntity
+import com.example.parcial2pdm.data.database.entities.QuestionEntity
 
 @Database(
-    entities = [PlaceOptionEntity::class],
-    version = 1,
+    entities = [QuestionEntity::class, PlaceOptionEntity::class],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
+    abstract fun questionDao(): QuestionDao
     abstract fun optionDao(): OptionDao
 
     companion object {

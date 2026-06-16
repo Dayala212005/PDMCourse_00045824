@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface OptionDao {
 
-    @Query("SELECT * FROM options")
-    fun getAllOptions(): Flow<List<PlaceOptionEntity>>
+    @Query("SELECT * FROM options WHERE questionId = :questionId")
+    fun getOptionsForQuestion(questionId: Int): Flow<List<PlaceOptionEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOption(option: PlaceOptionEntity)

@@ -6,43 +6,43 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.parcial2pdm.Parcial2PDM
-import com.example.parcial2pdm.data.repository.OptionRepository
+import com.example.parcial2pdm.data.repository.QuestionRepository
 import com.example.parcial2pdm.model.Place
+import com.example.parcial2pdm.model.Question
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class OptionsViewModel(
-    private val optionRepository: OptionRepository,
-    private val questionId: Int
-) : ViewModel() {
 
-    val options: StateFlow<List<Place>> =
-        optionRepository.getOptions(questionId)
+class QuestionViewModel(
+    private val questionRepository: QuestionRepository,
+): ViewModel() {
+    val questions : StateFlow<List<Question>> =
+        questionRepository.getQuestions()
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
                 initialValue = emptyList()
             )
 
-    fun addOption(name: String, imageUrl: String) {
+    fun addQuestion(title: String) {
         viewModelScope.launch {
-            optionRepository.addOption(name, imageUrl, questionId)
+            questionRepository.addQuestion(title)
         }
     }
 
-    fun deleteOption(option: Place) {
+    fun deleteOption(question: Question) {
         viewModelScope.launch {
-            optionRepository.deleteOption(option)
+            questionRepository.deleteQuestion(question)
         }
     }
 
     companion object {
-        fun provideFactory(questionId: Int) = viewModelFactory {
+        fun provideFactory() = viewModelFactory {
             initializer {
                 val app = this[APPLICATION_KEY] as Parcial2PDM
-                OptionsViewModel(app.appProvider.provideOptionRepository(), questionId)
+                QuestionViewModel(app.appProvider.provideQuestionRepository())
             }
         }
     }
